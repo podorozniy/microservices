@@ -11,7 +11,7 @@ services:
           - comment_db
   ui:
     build: ./ui
-    image: ${USERNAME}/ui:1.0
+    image: ${USERNAME}/ui:2.0
     ports:
       - 9292:9292/tcp
     networks:
