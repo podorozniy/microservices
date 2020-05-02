@@ -1,6 +1,7 @@
 FROM python:3.6.0-alpine
 
-RUN pip install flask pymongo
+RUN pip install --upgrade pip
+RUN pip install flask pymongo prometheus_client structlog py-zipkin requests
 
 WORKDIR /app
 ADD . /app
