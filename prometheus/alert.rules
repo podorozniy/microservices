@@ -1,4 +1,3 @@
-# Alert for any instance that is unreachable for >5 minutes.
 ALERT InstanceDown
   IF up == 0
   FOR 1m
