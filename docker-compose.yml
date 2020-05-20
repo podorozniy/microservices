@@ -54,6 +54,8 @@ services:
 
   mongodb-exporter:
     image: bitnami/mongodb-exporter:latest
+    environment: 
+      - MONGODB_URI=mongodb://mongo_db:27017
     networks:
       - mongodb-exporter-network
       - back_net
