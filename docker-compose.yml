@@ -5,6 +5,7 @@ services:
     volumes:
       - post_db:/data/db
     networks:
+      mongodb-exporter-network:
       back_net:
         aliases:
           - post_db
@@ -53,7 +54,18 @@ services:
 
   mongodb-exporter:
     image: bitnami/mongodb-exporter:latest
+    environment: 
+      - MONGODB_URI=mongodb://mongo_db:27017
     networks:
+      - mongodb-exporter-network
+      - back_net
+
+  blackbox-exporter:
+    image: prom/blackbox-exporter
+    ports:
+      - '9115:9115'
+    networks:
+      - front_net
       - back_net
 
   cadvisor:
@@ -98,3 +110,4 @@ volumes:
 networks:
   front_net:
   back_net:
+  mongodb-exporter-network:
