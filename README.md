@@ -14,6 +14,7 @@ docker swarm init
 docker swarm join --token SWMTKN-1-27upfa4a4imno34drva0ult6rbdnn9t8oc626t0d95hk6gr0sx-5vk86neifcvoynjoo8rq4t0b9 10.132.0.4:2377
 
 docker stack deploy --compose-file=<(docker-compose -f docker-compose.yml config 2>/dev/null) DEV
+docker stack deploy/rm/services/ls STACK_NAME
 docker stack services DEV
 docker stack ps DEV
 

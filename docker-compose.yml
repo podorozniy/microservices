@@ -2,6 +2,10 @@ version: '3.3'
 services:
   mongo_db:
     image: mongo:3.2
+    deploy:
+      placement:
+        constraints:
+          - node.labels.reliability == high
     volumes:
       - post_db:/data/db
     networks:
@@ -12,17 +16,51 @@ services:
           - comment_db
   ui:
     image: podorozniy/ui:${VERSION_UI}
+    deploy:
+      update_config:
+        delay: 5s
+        parallelism: 1
+        failure_action: pause
+      mode: replicated
+      replicas: 3
+      placement:
+        constraints:
+          - node.role == worker
+    environment:
+      - ENV=DEV
     ports:
       - ${PORT}:${PORT}/${PROTOCOL}
     networks:
       - front_net
+
   post:
     image: podorozniy/post:${VERSION_POST}
+    deploy:
+      update_config:
+        delay: 10s
+        parallelism: 2
+        failure_action: rollback
+      mode: replicated
+      replicas: 3
+      placement:
+        constraints:
+          - node.role == worker
     networks:
       - front_net
       - back_net
+
   comment:
     image: podorozniy/comment:${VERSION_COMMENT}
+    deploy:
+      update_config:
+        delay: 10s
+        parallelism: 2
+        failure_action: rollback
+      mode: replicated
+      replicas: 3
+      placement:
+        constraints:
+          - node.role == worker
     networks:
       - front_net
       - back_net
