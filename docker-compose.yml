@@ -17,6 +17,10 @@ services:
   ui:
     image: podorozniy/ui:${VERSION_UI}
     deploy:
+      resources:
+        limits:
+          cpus: '0.25'
+          memory: 150M
       update_config:
         delay: 5s
         parallelism: 1
@@ -36,6 +40,10 @@ services:
   post:
     image: podorozniy/post:${VERSION_POST}
     deploy:
+      resources:
+        limits:
+          cpus: '0.3'
+          memory: 300M
       update_config:
         delay: 10s
         parallelism: 2
@@ -52,6 +60,10 @@ services:
   comment:
     image: podorozniy/comment:${VERSION_COMMENT}
     deploy:
+      resources:
+        limits:
+          cpus: '0.3'
+          memory: 300M
       update_config:
         delay: 10s
         parallelism: 2
