@@ -2,6 +2,13 @@
 #
 #swarm
 docker-machine create --driver google \
+   --google-project  docker-182408  \
+   --google-zone europe-west1-b \
+   --google-machine-type g1-small \
+   --google-machine-image $(gcloud compute images list --filter ubuntu-1604-lts --uri) \
+   master-1
+
+docker-machine create --driver google \
    --google-project  docker-274114  \
    --google-zone europe-west1-b \
    --google-machine-type g1-small \
@@ -27,6 +34,7 @@ docker node ls -q | xargs docker node inspect  -f '{{ .ID }} [{{ .Description.Ho
 docker inspect $(docker stack ps DEV -q --filter "Name=DEV_ui.1") --format "{{.Status.ContainerStatus.ContainerID}}"
 
 docker stack deploy --compose-file=<(docker-compose -f docker-compose.infra.yml -f docker-compose.yml config 2>/dev/null)  DEV
+
 export USER_NAME=podorozniy
 
 Запушьте собранные вами образы на DockerHub:
