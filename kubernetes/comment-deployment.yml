@@ -14,5 +14,5 @@ spec:
         app: comment
     spec:
       containers:
-      - image: podorozniy/comment:${VERSION_COMMENT}
+      - image: podorozniy/comment
         name: comment

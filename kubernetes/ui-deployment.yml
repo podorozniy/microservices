@@ -14,5 +14,5 @@ spec:
         app: ui
     spec:
       containers:
-      - image: podorozniy/ui:${VERSION_UI}
+      - image: podorozniy/ui:5.0
         name: ui

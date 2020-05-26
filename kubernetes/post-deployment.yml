@@ -14,5 +14,5 @@ spec:
         app: post
     spec:
       containers:
-      - image: podorozniy/post:${VERSION_POST}
+      - image: podorozniy/post
         name: post
