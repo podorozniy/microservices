@@ -2,5 +2,5 @@ build_info.txt
 
 ## python specific
 *.pyc
-.pem
-.csr
+*.pem
+*.csr
