@@ -8,6 +8,8 @@ services:
 
   elasticsearch:
     image: podorozniy/elasticsearch:${VERSION_ELASTIC}
+    environment:
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
     expose:
       - 9200
     ports:

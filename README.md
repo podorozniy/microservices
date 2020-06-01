@@ -18,6 +18,10 @@ $ eval $(docker-machine env logging)
 # узнаем IP адрес
 $ docker-machine ip logging
 
+#for elastic
+docker-machine ssh
+sudo sysctl -w vm.max_map_count=262144
+
 $ bash docker_build.sh
 $ bash docker_build.sh
 $ bash docker_build.sh

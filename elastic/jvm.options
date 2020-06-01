@@ -8,8 +8,8 @@
 ## size to the same value. For example, to set
 ## the heap to 4 GB, set:
 ##
--Xms1g
--Xmx1g
+-Xms256m
+-Xmx256m
 ##
 ## See https://www.elastic.co/guide/en/elasticsearch/reference/current/heap-size.html
 ## for more information
